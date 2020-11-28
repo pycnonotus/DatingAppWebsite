@@ -1,4 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using API.Data;
+using API.Helper;
+using API.Interface;
+using API.Service;
+using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Extensions
@@ -7,10 +13,12 @@ namespace API.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration conf)
         {
-            
             services.AddDbContext<DataContext> (options => {
-                options.USe (conf.GetConnectionString ("DefaultConnection"));
+                options.UseNpgsql (conf.GetConnectionString ("DefaultConnection"));
             });
+            services.AddScoped<ITokenService, TokenService> ();
+            services.AddAutoMapper (typeof (AutoMapperProfiles).Assembly);
+
             return services;
         }
     }

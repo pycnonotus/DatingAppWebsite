@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+}
+
+:host {
+  background-image: url('/assets/img/trees-4664060_1920.jpg');
+  height: 100%;
+  display: block;
+  overflow: auto;
+}
+
+.flex {
+  display: flex;
+  height: 100%;
+  border: 1px solid red;
+  align-items: stretch;
+}
