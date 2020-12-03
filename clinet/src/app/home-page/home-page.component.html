@@ -1,16 +1,27 @@
-<div class="flex">
+<div [class]="'flex'" [ngClass]="+registerMod?'registerMod-in':'registerMod-up'" >
   <div class="form-wrap">
-    <form>
-      <h1>SingUp</h1>
-      <p>Finding true love has never been so easy</p>
-
-
-    </form>
-    <form action="">
-
-    </form>
+  <div class="sing-in">
+    <app-home-page-unregisterd *ngIf="registerMod"></app-home-page-unregisterd>
+    <app-home-page-login *ngIf="!registerMod"></app-home-page-login>
+  </div>
   </div>
   <div class="change-mod">
-      
+      <div class="sm-hide">
+         <h1>
+           You don't Have an account ?
+         </h1>
+        <p class="">
+          Well maybe is time to make one
+        </p>
+      </div>
+      <div class="sm-show">
+          have an account ?
+      </div>
+    <div class="change-mod-btn">
+
+      <button mat-button color="primary"class="btn btn-outline" (click)="registerMod=!registerMod" >
+        {{registerMod ? 'Sing In':'Sing Up'}}
+      </button>
+    </div>
   </div>
 </div>

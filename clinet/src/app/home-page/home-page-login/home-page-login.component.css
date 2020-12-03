@@ -1,0 +1,12 @@
+:host{
+  display:block;
+  margin:0 auto;
+  padding:1em;
+  text-align: center;
+}
+mat-form-field{
+  width: 100%;
+}
+button{
+  width: 100%;
+}

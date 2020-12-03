@@ -1,6 +1,7 @@
 ﻿using API.DTO;
 using API.Entities;
 using AutoMapper;
+using DTO;
 
 namespace API.Helper
 {
@@ -9,6 +10,8 @@ namespace API.Helper
         public AutoMapperProfiles()
         {
             CreateMap<RegisterDto, AppUser>();
+            CreateMap<AppUser, MemberDto>();
+
 
 
         }

@@ -1,1 +1,110 @@
-<p>home-page-unregisterd works!</p>
+<form (submit)=" onSubmit()" #ngRegisterForm="ngForm">
+  <mat-vertical-stepper [linear]="" #stepper>
+    <mat-step [stepControl]="formRegister">
+      <div class="form" [formGroup]="basicInfo">
+        <ng-template matStepLabel>Basic Info</ng-template>
+        <div class="">
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input formControlName="firstName" matInput  required />
+             <mat-error *ngIf="basicInfo.get('firstName').hasError('required')">
+               First name is a required field.
+             </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput formControlName="lastName" required />
+              <mat-error *ngIf="basicInfo.get('lastName').hasError('required')">
+               Last name is a required field.
+             </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field appearance="fill">
+
+            <mat-label>Choose a date</mat-label>
+            <input matInput  formControlName="dateOfBirth" [matDatepicker]="picker" [max]="maxDate" />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker startView="year"></mat-datepicker>
+              <mat-error *ngIf="basicInfo.get('dateOfBirth').hasError('required')">
+               Date of birth is required a required field.
+               <br>
+               make sure to use the day/mount/full year format
+             </mat-error>
+              <mat-error *ngIf="basicInfo.get('dateOfBirth').hasError('minimumAge')">
+                You must be over 18 years old
+             </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="gender">
+          <label id="example-radio-group-label">Gender: </label>
+
+          <mat-radio-group aria-label="Select an option" required>
+            <mat-radio-button value="Female">Female</mat-radio-button>
+            <mat-radio-button value="Male">Male</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="text-center">
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup">
+      <div class="form" [formGroup]="secondFormGroup">
+        <div class="example-container">
+          <ng-template matStepLabel>Intrests </ng-template>
+          <div class="">
+            <mat-form-field appearance="fill">
+              <mat-label>You are insreredent in ?</mat-label>
+              <mat-select>
+                <mat-option value="option">Female</mat-option>
+                <mat-option value="option">Male</mat-option>
+                <mat-option value="option">Both</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="">
+            <mat-form-field appearance="fill">
+              <mat-label>A litle bit about you</mat-label>
+              <textarea rows="4" matInput></textarea>
+            </mat-form-field>
+          </div>
+          <div class="text-center">
+            <button mat-button matStepperPrevious>Back</button>
+
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </div>
+      </div>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Login information</ng-template>
+      <p>We are almost there</p>
+      <div class="form" [formGroup]="secondFormGroup">
+        <div class="example-container">
+          <ng-template matStepLabel>What do you look for?</ng-template>
+
+          <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="pat@example.com" required />
+            <!-- <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error> -->
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="pat@example.com" required />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="text-center">
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-flat-button color="primary" type="submit" >
+          Submit
+        </button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</form>

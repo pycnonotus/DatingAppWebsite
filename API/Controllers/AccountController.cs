@@ -29,7 +29,7 @@ namespace API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto)
         {
-            var isUserExists = await _userManager.Users.Where(x => x.NormalizedUserName == registerDto.Username)
+            var isUserExists = await _userManager.Users.Where(x => x.NormalizedUserName == registerDto.Username.ToUpper())
                 .Select(x => 1)
                 .FirstOrDefaultAsync(); // defualot of int is 0 , not null 
             if (isUserExists != 0)
@@ -39,13 +39,20 @@ namespace API.Controllers
 
             var user = _mapper.Map<AppUser>(registerDto);
 
-            await _userManager.CreateAsync(user, registerDto.Password);
+            var userCreation = await _userManager.CreateAsync(user, registerDto.Password);
+            if (!userCreation.Succeeded)
+            {
+                return BadRequest(userCreation.Errors);
+            }
 
-
-            return Ok();
+            var userDto = new LoginBackDto
+            {
+                Token = await _tokenService.CreateToken(user)
+            };
+            return Ok(userDto);
         }
 
-        [HttpPost("/login")]
+        [HttpPost("login")]
         public async Task<ActionResult<LoginBackDto>> Login(LoginDto loginDto)
         {
             var login = await _userManager.FindByNameAsync(loginDto.Username);
@@ -63,10 +70,11 @@ namespace API.Controllers
 
             }
 
-            return new LoginBackDto
+            var userDto = new LoginBackDto
             {
                 Token =  await _tokenService.CreateToken(login)
             };
+            return Ok(userDto);
         }
     }
 }

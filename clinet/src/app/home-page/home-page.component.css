@@ -1,9 +1,7 @@
-* {
-  box-sizing: border-box;
-}
+
 
 :host {
-  background-image: url('/assets/img/trees-4664060_1920.jpg');
+  background-image: url("/assets/img/trees-4664060_1920.jpg");
   height: 100%;
   display: block;
   overflow: auto;
@@ -12,6 +10,114 @@
 .flex {
   display: flex;
   height: 100%;
-  border: 1px solid red;
   align-items: stretch;
+}
+
+.change-mod {
+  flex: 0 1 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--main-bg-color);
+}
+
+.change-mod > div {
+  margin: 3em;
+}
+
+.form-wrap {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.sing-in {
+  width: 100%;
+  max-width: 700px;
+}
+
+@media only screen and (max-width: 600px) {
+  .flex {
+    flex-direction: column;
+  }
+  .change-mod-btn,.sm-show{
+    margin: 0.5em auto!important;
+  }
+  .change-mod{
+    background: rgba(48, 48, 48, 0.5);
+      backdrop-filter: blur(5px);
+  }
+}
+@media only screen and (min-width: 601px) {
+  .registerMod-up {
+    flex-direction: row-reverse;
+    background: rgba(48, 48, 48, 0.8);
+
+    animation-duration: 2s;
+  }
+  .registerMod-in {
+    flex-direction: row;
+    background: rgba(48, 48, 48, 0.8);
+
+    animation-duration: 2s;
+  }
+  .registerMod-in .change-mod {
+    animation-name: example3;
+    animation-duration: 1s;
+  }
+  .registerMod-up .change-mod {
+    animation-name: example4;
+    animation-duration: 1s;
+  }
+}
+
+/* @keyframes example {
+  from {
+    background: rgba(48, 48, 48, 1);
+    color: rgba(48, 48, 48, 1);
+    display: none;
+  }
+  to {
+    background: rgba(48, 48, 48, 0.8);
+    color: #fff;
+  }
+}
+@keyframes example2 {
+  from {
+    background: rgba(48, 48, 48, 1);
+  }
+  to {
+    background: rgba(48, 48, 48, 0.8);
+    color: #fff;
+  }
+}
+@keyframes example3 {
+  from {
+    background: rgba(48, 48, 48, 0);
+  }
+  to {
+    background: rgba(48, 48, 48, 1);
+
+    color: #fff;
+  }
+} */
+/* @keyframes example4 {
+  from {
+    background: rgba(48, 48, 48, 0);
+  }
+  to {
+    background: rgba(48, 48, 48, 1);
+
+    color: #fff;
+  }
+} */
+.change-mod-btn {
+  width: 100%;
+  text-align: center;
+}
+.change-mod-btn > button {
+  width: 80%;
 }

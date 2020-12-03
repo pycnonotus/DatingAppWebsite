@@ -1,3 +1,4 @@
-export interface UserCredential {
+export interface User {
   token: string;
+  roles: any[];
 }

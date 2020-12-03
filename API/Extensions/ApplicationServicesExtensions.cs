@@ -18,6 +18,8 @@ namespace API.Extensions
             });
             services.AddScoped<ITokenService, TokenService> ();
             services.AddAutoMapper (typeof (AutoMapperProfiles).Assembly);
+            services.AddScoped<UnitOfWork>();
+
 
             return services;
         }
