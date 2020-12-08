@@ -9,37 +9,36 @@
     </button>
 
     <span class="md-screen">
-      <button
-      mat-button
-      >
-      Find Match
-    </button>
+      <button mat-button>Find Match</button>
 
-    <button
-    mat-button
-      >
-      My Matches
-    </button>
-    <button
-    mat-button
-      >
-      Message
-    </button>
-  </span>
-
+      <button mat-button>My Matches</button>
+      <button mat-button>Message</button>
+    </span>
 
     <span class="example-spacer"></span>
-         <button
-      mat-button
-      >
-      Good day {{(accountService.currentUser$|async).username}}
+    <button mat-button>
+      {{ (accountService.currentUser$ | async).username }}
     </button>
     <button
       mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon"
+      [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu"
     >
       <mat-icon>keyboard_arrow_down</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>Account settings</span>
+      </button>
+      <button mat-menu-item >
+        <mat-icon>face</mat-icon>
+        <span>Edit profile</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>lock_open</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   </div>
 </mat-toolbar>

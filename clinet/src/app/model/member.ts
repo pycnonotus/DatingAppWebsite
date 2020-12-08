@@ -3,4 +3,5 @@ export interface Member {
   lastName: string;
   gender: string;
   LookingFor: string;
+
 }

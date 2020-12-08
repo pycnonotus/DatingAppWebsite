@@ -21,6 +21,8 @@ namespace API.Entities
         public string Gender { get; set; }
         public string City { get; set; }
         public string LookingFor { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public ICollection<AppUserRole> UserRoles { get; set; }
 
 

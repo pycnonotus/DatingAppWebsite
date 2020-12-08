@@ -1,20 +1,32 @@
 <div class="search example-container">
-
   <form [formGroup]="">
     <div class="">
-      <mat-form-field appearance="fill" >
+      <mat-form-field appearance="fill">
         <mat-label>Form age</mat-label>
-        <input matInput placeholder="Simple placeholder">
+        <input matInput placeholder="Simple placeholder" />
       </mat-form-field>
 
-      <mat-form-field appearance="fill" >
+      <mat-form-field appearance="fill">
         <mat-label>To age</mat-label>
-        <input matInput placeholder="Simple placeholder">
+        <input matInput placeholder="Simple placeholder" />
       </mat-form-field>
     </div>
     <div class="">
-      <button mat-button> Search</button>
+      <button mat-button>Search</button>
     </div>
   </form>
 </div>
-<app-member-card></app-member-card>
+<ng-container *ngIf="(members && members.length > 0)">
+  <app-member-card
+    [member]="members[0]"
+  ></app-member-card>
+</ng-container>
+<!--
+  TODO:
+  change this to ng else, had a bug with it, idk why, it should worl tho *ngIf="(members && members.length > 0);else #noMoreMatches"
+-->
+<ng-container #noMoreMatches *ngIf="!(members && members.length > 0)">
+  <div class="" >
+    Sadly there are no more members, you can try again later.
+  </div>
+</ng-container>

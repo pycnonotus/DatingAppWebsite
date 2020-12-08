@@ -4,4 +4,5 @@ export interface MemberRegister extends Member {
   about?: string;
   username: string;
   password: string;
+  dateOfBirth: Date;
 }

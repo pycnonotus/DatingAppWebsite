@@ -36,17 +36,17 @@ export class AccountService {
   public login(user: { username: string; password: string }) {
     const url = this.baseUrl + 'account/login';
     this.http.post(url, user).subscribe((res: User) => {
-      this.currentUserSource.next(res);
+      this.setUser(res);
     });
   }
 
-  private setUser(user: User): void {
+  public setUser(user: User): void {
     if (user != null) {
       user.roles = [];
       const decode = this.getDecodedToken(user.token);
       const roles = decode.roles;
       Array.isArray(roles) ? (user.roles = roles) : user.roles.push(roles);
-      user.username = decode.username;
+      user.username = decode.unique_name;
     }
     localStorage.setItem('user', JSON.stringify(user));
     this.currentUserSource.next(user);

@@ -48,6 +48,7 @@ namespace API.Controllers
             var userDto = new LoginBackDto
             {
                 Token = await _tokenService.CreateToken(user)
+
             };
             return Ok(userDto);
         }

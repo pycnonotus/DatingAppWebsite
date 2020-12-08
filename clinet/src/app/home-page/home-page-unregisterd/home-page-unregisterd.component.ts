@@ -103,6 +103,7 @@ export class HomePageUnregisterdComponent implements OnInit, OnDestroy {
       about: this.interestForm.get('about').value,
       username: this.loginInfoForm.get('username').value,
       password: this.loginInfoForm.get('password').value,
+      dateOfBirth: this.basicInfo.get('dateOfBirth').value,
     });
     return false;
   }
