@@ -10,12 +10,22 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class HomePageLoginComponent implements OnInit {
   constructor(private accountService: AccountService, private router: Router) {}
-  model: { username: string; password: string };
+  model: { username: string; password: string } = {
+    username: '',
+    password: '',
+  };
   ngOnInit(): void {}
 
   login() {
-    this.accountService.currentUser$.pipe(take(1)).subscribe((user) => {
-      this.router.navigateByUrl('/matches');
-    });
+    console.log('sabba0');
+    this.accountService.login(this.model);
+    this.accountService.currentUser$.pipe(take(1)).subscribe(
+      (user) => {
+        console.log('sabba1');
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }

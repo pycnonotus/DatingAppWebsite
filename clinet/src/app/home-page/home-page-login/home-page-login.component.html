@@ -3,18 +3,18 @@
       <div class="example-container">
         <mat-form-field appearance="fill">
           <mat-label>Username</mat-label>
-          <input matInput placeholder="pat@example.com"  />
+          <input matInput [(ngModel)]="model.username" name="username"   />
           <!-- <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error> -->
         </mat-form-field>
       </div>
       <div class="">
          <mat-form-field appearance="fill">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="pat@example.com"  />
+          <input matInput [(ngModel)]="model.password" name="password" />
         </mat-form-field>
       </div>
       <div class="">
-            <button mat-raised-button color="primary">login</button>
+            <button type="submit" mat-raised-button color="primary">login</button>
 
       </div>
 </form>

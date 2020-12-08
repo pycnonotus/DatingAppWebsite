@@ -24,11 +24,11 @@ mat-vertical-stepper {
 .mat-radio-button ~ .mat-radio-button {
   margin: 1em;
 }
-.gender label {
+.genderWrap label {
   margin: 1em;
 
 }
-.gender{
+.genderWrap{
   text-align: center;
 }
 .text-center{

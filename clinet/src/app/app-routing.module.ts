@@ -6,12 +6,13 @@ import {HomePageComponent} from './home-page/home-page.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent, pathMatch: 'full' },
-  { path: 'complete-register', component: AccountFillMissingInfoComponent },
   {
     path: '',
-    component: MainComponent,
-    children: [{ path: 'find', component: FindMatchComponent }],
+    component: HomePageComponent,
+    children: [
+      { path: 'find', component: FindMatchComponent },
+      { path: '', component: FindMatchComponent },
+    ],
   },
 ];
 

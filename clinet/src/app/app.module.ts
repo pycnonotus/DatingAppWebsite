@@ -13,7 +13,12 @@ import { DateInputComponent } from './shared/form/date-input/date-input.componen
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
+import {
+  ErrorStateMatcher,
+  MatNativeDateModule,
+  MAT_DATE_LOCALE,
+  ShowOnDirtyErrorStateMatcher,
+} from '@angular/material/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { HomePageLoginComponent } from './home-page/home-page-login/home-page-login.component';
@@ -64,7 +69,10 @@ import { MatRadioModule } from '@angular/material/radio';
     MatStepperModule,
     MatRadioModule,
   ],
-  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

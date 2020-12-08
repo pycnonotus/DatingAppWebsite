@@ -32,7 +32,7 @@
          <button
       mat-button
       >
-      Good day name
+      Good day {{(accountService.currentUser$|async).username}}
     </button>
     <button
       mat-icon-button

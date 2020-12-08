@@ -1,27 +1,32 @@
-<div [class]="'flex'" [ngClass]="+registerMod?'registerMod-in':'registerMod-up'" >
+<div
+  [class]="'flex'"
+  [ngClass]="+registerMod ? 'registerMod-in' : 'registerMod-up'"
+  *ngIf="!($account | async)"
+>
   <div class="form-wrap">
-  <div class="sing-in">
-    <app-home-page-unregisterd *ngIf="registerMod"></app-home-page-unregisterd>
-    <app-home-page-login *ngIf="!registerMod"></app-home-page-login>
-  </div>
+    <div class="sing-in">
+      <app-home-page-unregisterd
+        *ngIf="registerMod"
+      ></app-home-page-unregisterd>
+      <app-home-page-login *ngIf="!registerMod"></app-home-page-login>
+    </div>
   </div>
   <div class="change-mod">
-      <div class="sm-hide">
-         <h1>
-           You don't Have an account ?
-         </h1>
-        <p class="">
-          Well maybe is time to make one
-        </p>
-      </div>
-      <div class="sm-show">
-          have an account ?
-      </div>
+    <div class="sm-hide">
+      <h1>You don't Have an account ?</h1>
+      <p class="">Well maybe is time to make one</p>
+    </div>
+    <div class="sm-show">have an account ?</div>
     <div class="change-mod-btn">
-
-      <button mat-button color="primary"class="btn btn-outline" (click)="registerMod=!registerMod" >
-        {{registerMod ? 'Sing In':'Sing Up'}}
+      <button
+        mat-button
+        color="primary"
+        class="btn btn-outline"
+        (click)="registerMod = !registerMod"
+      >
+        {{ registerMod ? "Sing In" : "Sing Up" }}
       </button>
     </div>
   </div>
 </div>
+<app-main *ngIf="$account| async"></app-main>
