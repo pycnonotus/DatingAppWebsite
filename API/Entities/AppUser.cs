@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Entities;
 using Microsoft.AspNetCore.Identity;
 
 namespace API.Entities
@@ -24,6 +25,11 @@ namespace API.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public ICollection<AppUserRole> UserRoles { get; set; }
+        public ICollection<UserLike> LikedUsers { get; set; }
+        public string PhotoUrl { get; set; }
+        public string AboutMe { get; set; }
+
+
 
 
     }

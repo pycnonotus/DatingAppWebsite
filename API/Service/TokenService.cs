@@ -30,14 +30,16 @@ namespace API.Service
             var claims = new List<Claim> {
                 new Claim (JwtRegisteredClaimNames.NameId, user.Id.ToString()),
                 new Claim (JwtRegisteredClaimNames.UniqueName, user.UserName),
-            };
+                new Claim (JwtRegisteredClaimNames.Gender, user.Gender),
+                new Claim ("preferred_gender", user.LookingFor)
+        };
 
             var roles = await userManager.GetRolesAsync(user);
 
             claims.AddRange(roles.Select(role => 
                 new Claim(ClaimTypes.Role, role)
             ));
-
+            
             var creds = new SigningCredentials(
                 key,
                 SecurityAlgorithms.HmacSha512Signature

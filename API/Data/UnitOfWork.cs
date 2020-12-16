@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using AutoMapper;
+using Data;
 
 namespace API.Data
 {
@@ -13,11 +14,7 @@ namespace API.Data
             this.context = context;
         }
         public UserRepository UserRepository => new UserRepository(context, mapper);
-
-
-
-
-
+        public LikeRepository LikeRepository => new LikeRepository(context, mapper);
 
         public async Task<bool> Complete()
         {

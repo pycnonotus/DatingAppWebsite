@@ -40,6 +40,7 @@ export class AccountService {
     });
   }
 
+
   public setUser(user: User): void {
     if (user != null) {
       user.roles = [];

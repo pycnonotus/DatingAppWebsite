@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HomePageUnregisterdComponent } from './home-page/home-page-unregisterd/home-page-unregisterd.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AccountFillMissingInfoComponent } from './account-fill-missing-info/account-fill-missing-info.component';
 import { DateInputComponent } from './shared/form/date-input/date-input.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
@@ -19,6 +19,7 @@ import {
   MAT_DATE_LOCALE,
   ShowOnDirtyErrorStateMatcher,
 } from '@angular/material/core';
+
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { HomePageLoginComponent } from './home-page/home-page-login/home-page-login.component';
@@ -34,6 +35,8 @@ import { MemberCardComponent } from './find-match/member-card/member-card.compon
 import { MatStepperModule } from '@angular/material/stepper';
 
 import { MatRadioModule } from '@angular/material/radio';
+import { JwtInterceptorInterceptor } from './interceptor/jwt-interceptor.interceptor';
+import { MatchesComponent } from './matches/matches.component';
 
 
 @NgModule({
@@ -48,6 +51,7 @@ import { MatRadioModule } from '@angular/material/radio';
     FindMatchComponent,
     NavComponent,
     MemberCardComponent,
+    MatchesComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +77,11 @@ import { MatRadioModule } from '@angular/material/radio';
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptorInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

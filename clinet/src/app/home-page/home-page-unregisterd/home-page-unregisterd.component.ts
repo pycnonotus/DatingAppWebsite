@@ -56,7 +56,7 @@ export class HomePageUnregisterdComponent implements OnInit, OnDestroy {
     });
     this.interestForm = this.formBuilder.group({
       interestIn: ['', [Validators.required]],
-      about: ['', ''],
+      aboutMe: ['', ''],
     });
 
     this.basicInfo = this.formBuilder.group({
@@ -100,7 +100,7 @@ export class HomePageUnregisterdComponent implements OnInit, OnDestroy {
       lastName: this.basicInfo.get('lastName').value,
       gender: this.basicInfo.get('gender').value,
       LookingFor: this.interestForm.get('interestIn').value,
-      about: this.interestForm.get('about').value,
+      aboutMe: this.interestForm.get('aboutMe').value,
       username: this.loginInfoForm.get('username').value,
       password: this.loginInfoForm.get('password').value,
       dateOfBirth: this.basicInfo.get('dateOfBirth').value,

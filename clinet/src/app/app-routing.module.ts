@@ -4,6 +4,7 @@ import { AccountFillMissingInfoComponent } from './account-fill-missing-info/acc
 import { FindMatchComponent } from './find-match/find-match.component';
 import {HomePageComponent} from './home-page/home-page.component';
 import { MainComponent } from './main/main.component';
+import { MatchesComponent } from './matches/matches.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     children: [
       { path: 'find', component: FindMatchComponent },
       { path: '', component: FindMatchComponent },
+      { path: 'match', component: MatchesComponent },
     ],
   },
 ];

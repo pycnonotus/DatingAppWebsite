@@ -1,5 +1,6 @@
 ﻿using System;
 using API.Entities;
+using Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ namespace API.Data
     public class DataContext : IdentityDbContext<AppUser, AppRole, Guid, IdentityUserClaim<Guid>, AppUserRole,
         IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
+        public DbSet<UserLike> Likes { get; set; }
         public DataContext(DbContextOptions options) : base(options)
         {
 
@@ -29,7 +31,22 @@ namespace API.Data
                 HasMany(
                     ur => ur.UserRoles
                 ).WithOne(u => u.Role).HasForeignKey(u => u.RoleId).IsRequired();
-           
+
+            builder.Entity<UserLike>().HasKey(k => new
+            {
+                k.SourceUserId,
+                k.LikedUserId
+            });
+            builder.Entity<UserLike>()
+            .HasOne(u => u.SourceUser)
+            .WithMany(u => u.LikedUsers).HasForeignKey(u => u.SourceUserId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+
+            //    builder.Entity<UserLike>()
+            //     .HasOne(u => u.LikedUser)
+            //     .WithMany(u => u.LikedByUsers).HasForeignKey(u => u.LikedUserId)
+            //     .OnDelete(DeleteBehavior.Cascade); // SQL SERVER change this to DeleteBehavior.NoAction
         }
     }
 
@@ -49,7 +66,7 @@ namespace API.Data
             builder.HasAnnotation(IsUtcAnnotation, isUtc);
 
         public static Boolean IsUtc(this IMutableProperty property) =>
-            ((Boolean?) property.FindAnnotation(IsUtcAnnotation)?.Value) ?? true;
+            ((Boolean?)property.FindAnnotation(IsUtcAnnotation)?.Value) ?? true;
 
         /// <summary>
         /// Make sure this is called after configuring all your entities.

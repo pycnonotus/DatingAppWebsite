@@ -1,6 +1,46 @@
-:host{
-  display:block;
-  width:100%;
-  max-width:600px;
-  margin: 0 auto;
+:host {
+  display: block;
+  max-width: 450px;
+  width: 100%;
+  margin: 0em auto;
+  position: relative;
+  box-sizing: border-box;
+}
+.img-wrap {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.img-wrap img {
+  height: min(600px, 80vh);
+
+  width: 100%;
+  object-fit: cover;
+
+  display: block;
+}
+:host .mat-card-image {
+  margin-bottom: 0;
+}
+.sub {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  padding: 1em;
+  background-color: #424242a0;
+  backdrop-filter: blur(2px);
+}
+.mat-accent {
+  color: #69f0ae !important;
+}
+.info {
+  margin: 1em;
+}
+h3 {
+  text-align: center;
+  width: 100%;
+}
+.btn {
+  display: flex;
+  justify-content: space-around;
 }

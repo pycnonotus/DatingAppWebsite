@@ -4,12 +4,14 @@ using API.DTO;
 using API.Entities;
 using API.Interface;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : BaseApiController
     {
         private readonly UserManager<AppUser> _userManager;
@@ -47,7 +49,9 @@ namespace API.Controllers
 
             var userDto = new LoginBackDto
             {
-                Token = await _tokenService.CreateToken(user)
+                Token = await _tokenService.CreateToken(user),
+                
+        
 
             };
             return Ok(userDto);
@@ -73,7 +77,8 @@ namespace API.Controllers
 
             var userDto = new LoginBackDto
             {
-                Token =  await _tokenService.CreateToken(login)
+                Token =  await _tokenService.CreateToken(login),
+                
             };
             return Ok(userDto);
         }

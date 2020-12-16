@@ -16,17 +16,16 @@
     </div>
   </form>
 </div>
-<ng-container *ngIf="(members && members.length > 0)">
+<ng-container *ngIf="members && members.length > 0">
   <app-member-card
     [member]="members[0]"
+    (userInteracted)="onUserInteracted($event)"
   ></app-member-card>
 </ng-container>
 <!--
   TODO:
-  change this to ng else, had a bug with it, idk why, it should worl tho *ngIf="(members && members.length > 0);else #noMoreMatches"
+  change this to ng else, had a bug with it, idk why, it should work tho *ngIf="(members && members.length > 0);else #noMoreMatches"
 -->
 <ng-container #noMoreMatches *ngIf="!(members && members.length > 0)">
-  <div class="" >
-    Sadly there are no more members, you can try again later.
-  </div>
+  <div class="">Sadly there are no more members, you can try again later.</div>
 </ng-container>

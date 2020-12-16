@@ -10,8 +10,9 @@
 
     <span class="md-screen">
       <button mat-button>Find Match</button>
-
-      <button mat-button>My Matches</button>
+      <button mat-button
+      routerLink="/match" routerLinkActive="active"
+      >My Matches</button>
       <button mat-button>Message</button>
     </span>
 
@@ -35,7 +36,7 @@
         <mat-icon>face</mat-icon>
         <span>Edit profile</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="logout()">
         <mat-icon>lock_open</mat-icon>
         <span>Logout</span>
       </button>

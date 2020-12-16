@@ -10,4 +10,8 @@ export class NavComponent implements OnInit {
   constructor(public accountService: AccountService) {}
 
   ngOnInit(): void {}
+
+  logout(): void {
+    this.accountService.setUser(null);
+  }
 }
