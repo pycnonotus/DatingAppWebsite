@@ -58,6 +58,8 @@ namespace API
             
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<PresenceHub>("hubs/presence");
+                endpoints.MapHub<MessageHub>("hubs/message");
                 endpoints.MapControllers();
             });
         }
