@@ -23,6 +23,19 @@
 .buble {
   margin-bottom: 0;
 }
+.buble button {
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.buble .chat-container,
+.text-send {
+  /* border: 2px solid #c2185b;
+  border-bottom: 0;
+  border-top: 0; */
+}
+.name-hold{
+  text-align: left;
+}
 .chat-container {
   max-width: 250px;
   background-color: #424242;

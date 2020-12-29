@@ -6,8 +6,8 @@
         >close</mat-icon
       >
     </button>
-    <button mat-flat-button color="primary" (click)="showChat = !showChat">
-      {{ chat.member.firstName }} {{ chat.member.lastName }} {{rand}}
+    <button mat-flat-button color="primary" (click)="showChat = !showChat" class="name-hold">
+      {{ chat.member.firstName }} {{ chat.member.lastName }}
     </button>
 
     <div class="chat-container" *ngIf="showChat">

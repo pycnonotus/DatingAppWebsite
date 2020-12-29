@@ -2,5 +2,6 @@
   <app-desktop-chat-buble
     *ngFor="let m of messageService.messagesMemberData "
     [chat]="m"
+    (closeChat)="closeChat(m)"
   ></app-desktop-chat-buble>
 </div>

@@ -11,10 +11,11 @@ export class DesktopChatBubleComponent implements OnInit {
   @Input() chat: MemberChat;
   @Output() closeChat = new EventEmitter();
   showChat = false;
-  rand = Math.random();
   ngOnInit(): void {}
 
   onClose() {
+    console.log('i wish to close');
+
     this.closeChat.emit(this.chat.member);
   }
 }
