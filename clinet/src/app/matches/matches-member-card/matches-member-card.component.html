@@ -1,0 +1,16 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      {{ member.firstName }} {{ member.lastName }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ member.gender }}, {{ member.age }}
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <button mat-flat-button color="accent" (click)="openChat()">
+      Send message
+    </button>
+    <button mat-flat-button color="warn">Remove like</button>
+  </mat-card-content>
+</mat-card>

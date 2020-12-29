@@ -1,0 +1,44 @@
+:host {
+  font-size: 16px;
+  margin: 0 0.2em;
+  margin-top: auto;
+}
+
+.buble > button:not(.close) {
+  min-width: 150px;
+  border-left: none;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+}
+.buble > button.close {
+  min-width: auto;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+.close mat-icon {
+  font-size: 12px !important;
+  height: 12px;
+  width: 12px;
+}
+.buble {
+  margin-bottom: 0;
+}
+.chat-container {
+  max-width: 250px;
+  background-color: #424242;
+  padding: 1em;
+}
+.chat-container ~ button:not(.close) {
+  width: calc(100% - 44px);
+}
+.text-send mat-form-field {
+  width: 100%;
+}
+.text-send {
+  background-color: #424242;
+  padding: 0 1em;
+}
+.text-send input {
+  width: 100%;
+  display: block;
+}

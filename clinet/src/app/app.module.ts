@@ -37,6 +37,12 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatRadioModule } from '@angular/material/radio';
 import { JwtInterceptorInterceptor } from './interceptor/jwt-interceptor.interceptor';
 import { MatchesComponent } from './matches/matches.component';
+import { MatchesMemberCardComponent } from './matches/matches-member-card/matches-member-card.component';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { DesktopOnlyComponent } from './desktop-only/desktop-only.component';
+import { DesktopChatComponent } from './desktop/desktop-chat/desktop-chat.component';
+import { DesktopChatBubleComponent } from './desktop/desktop-chat/desktop-chat-buble/desktop-chat-buble.component';
 
 
 @NgModule({
@@ -52,6 +58,10 @@ import { MatchesComponent } from './matches/matches.component';
     NavComponent,
     MemberCardComponent,
     MatchesComponent,
+    MatchesMemberCardComponent,
+    DesktopOnlyComponent,
+    DesktopChatComponent,
+    DesktopChatBubleComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +83,8 @@ import { MatchesComponent } from './matches/matches.component';
     MatStepperModule,
     MatRadioModule,
     MatMenuModule,
+    MatDividerModule,
+    MatButtonToggleModule,
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

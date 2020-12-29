@@ -60,7 +60,8 @@ namespace API.Data
             username = username.ToUpper();
             var query = context.Likes.Where(q => q.SourceUser.NormalizedUserName == username && q.Liked).
             Where(q => context.Likes.Any(f => f.SourceUserId == q.LikedUserId && q.Liked)).
-            Select(x => x.LikedUser);
+            Select(x => x.LikedUser)
+            .OrderBy(x => x.Created).Reverse();
             return await query.ProjectTo<MemberDto>(this.mapper.ConfigurationProvider).AsNoTracking().ToListAsync();
         }
     }

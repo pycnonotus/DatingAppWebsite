@@ -1,0 +1,30 @@
+<div class="buble">
+  <ng-container>
+    <div class="chat-container" [hidden]="true" *ngIf="showChat"></div>
+    <button mat-flat-button color="primary" class="close" (click)="onClose()">
+      <mat-icon aria-hidden="false" aria-label="Example home icon"
+        >close</mat-icon
+      >
+    </button>
+    <button mat-flat-button color="primary" (click)="showChat = !showChat">
+      {{ chat.member.firstName }} {{ chat.member.lastName }} {{rand}}
+    </button>
+
+    <div class="chat-container" *ngIf="showChat">
+      <div class="history">
+        <p>Lorem ipsum dolor sit amet.</p>
+        <p>Eaque a ducimus vel perferendis!</p>
+        <p>Amet quis dignissimos aspernatur tempore.</p>
+        <p>Autem praesentium sit sunt quis?</p>
+        <p>Ipsa cupiditate obcaecati deserunt veritatis?</p>
+      </div>
+    </div>
+  </ng-container>
+</div>
+<div class="text-send">
+  <mat-form-field appearance="legacy" *ngIf="showChat">
+
+    <input matInput placeholder="Message" autocomplete="off" />
+    <mat-icon matSuffix>send</mat-icon>
+  </mat-form-field>
+</div>

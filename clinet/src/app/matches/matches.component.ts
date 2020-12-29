@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Member } from '../model/member';
 import { MembersService } from '../services/members.service';
 
@@ -9,11 +11,10 @@ import { MembersService } from '../services/members.service';
 })
 export class MatchesComponent implements OnInit {
   constructor(private memberService: MembersService) {}
-
-  members: Member[] = [];
+  maths$: Observable<Member[]> = null;
   ngOnInit(): void {
-    this.memberService.getMatches().subscribe((res: Member[]) => {
-      this.members = res;
-    });
+    this.maths$ = this.memberService.getMatches();
   }
+
+
 }

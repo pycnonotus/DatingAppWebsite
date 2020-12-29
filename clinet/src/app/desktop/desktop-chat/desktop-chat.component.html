@@ -1,0 +1,6 @@
+<div class="chats">
+  <app-desktop-chat-buble
+    *ngFor="let m of messageService.messagesMemberData "
+    [chat]="m"
+  ></app-desktop-chat-buble>
+</div>

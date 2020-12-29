@@ -1,0 +1,22 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-size: cover;
+}
+.mat-accent {
+  background-color:   #69f0ae !important;
+}
+
+.mat-accent {
+
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.mat-warn {
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+
+}

@@ -26,7 +26,8 @@ export class MembersService {
 
   public getMatches() {
     const url = this.baseUrl + 'member/match';
-        return this.http.get(url);
+
+        return this.http.get<Member[]>(url);
 
   }
 
