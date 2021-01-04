@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using API.Entities;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using DTO;
@@ -63,6 +64,11 @@ namespace API.Data
             Select(x => x.LikedUser)
             .OrderBy(x => x.Created).Reverse();
             return await query.ProjectTo<MemberDto>(this.mapper.ConfigurationProvider).AsNoTracking().ToListAsync();
+        }
+        public async Task<AppUser> GetUserByUsernameAsync(string username)
+        {
+            return await context.Users.SingleOrDefaultAsync(x => x.UserName == username);
+
         }
     }
 }

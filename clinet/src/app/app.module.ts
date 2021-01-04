@@ -43,6 +43,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { DesktopOnlyComponent } from './desktop-only/desktop-only.component';
 import { DesktopChatComponent } from './desktop/desktop-chat/desktop-chat.component';
 import { DesktopChatBubleComponent } from './desktop/desktop-chat/desktop-chat-buble/desktop-chat-buble.component';
+import { TimeagoModule } from 'ngx-timeago';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { DesktopChatBubleComponent } from './desktop/desktop-chat/desktop-chat-b
     MatMenuModule,
     MatDividerModule,
     MatButtonToggleModule,
+    TimeagoModule.forRoot(),
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },

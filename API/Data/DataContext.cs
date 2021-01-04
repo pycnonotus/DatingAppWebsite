@@ -14,6 +14,8 @@ namespace API.Data
         IdentityUserLogin<Guid>, IdentityRoleClaim<Guid>, IdentityUserToken<Guid>>
     {
         public DbSet<UserLike> Likes { get; set; }
+        public DbSet<Message> Messages { get; set; }
+
         public DataContext(DbContextOptions options) : base(options)
         {
 
@@ -42,11 +44,19 @@ namespace API.Data
             .WithMany(u => u.LikedUsers).HasForeignKey(u => u.SourceUserId)
             .OnDelete(DeleteBehavior.NoAction);
 
+            builder.Entity<Message>().HasOne(u => u.Recipient)
+            .WithMany(u => u.MessageReceived).OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Message>().HasOne(u => u.Sender)
+            .WithMany(u => u.MessageSend).OnDelete(DeleteBehavior.Restrict);
+
 
             //    builder.Entity<UserLike>()
             //     .HasOne(u => u.LikedUser)
             //     .WithMany(u => u.LikedByUsers).HasForeignKey(u => u.LikedUserId)
             //     .OnDelete(DeleteBehavior.Cascade); // SQL SERVER change this to DeleteBehavior.NoAction
+            builder.ApplyUtcDateTimeConverter();
+
         }
     }
 

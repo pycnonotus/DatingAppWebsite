@@ -28,6 +28,8 @@ namespace API.Entities
         public ICollection<UserLike> LikedUsers { get; set; }
         public string PhotoUrl { get; set; }
         public string AboutMe { get; set; }
+        public ICollection<Message> MessageSend { get; set; }
+        public ICollection<Message> MessageReceived { get; set; }
 
 
 

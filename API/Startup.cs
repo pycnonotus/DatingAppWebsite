@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Extensions;
+using API.SignalR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,8 +30,8 @@ namespace API
         {
             services.AddApplicationServices(_conf);
             services.AddIdentityServices(_conf);
+            services.AddSignalR();
             services.AddCors();
-
             services.AddControllers();
            
         }
@@ -58,7 +59,6 @@ namespace API
             
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapHub<PresenceHub>("hubs/presence");
                 endpoints.MapHub<MessageHub>("hubs/message");
                 endpoints.MapControllers();
             });

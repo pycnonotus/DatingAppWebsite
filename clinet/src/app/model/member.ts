@@ -6,4 +6,5 @@ export interface Member {
   LookingFor: string;
   age?: number;
   aboutMe: string;
+  photoUrl?: string;
 }

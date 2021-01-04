@@ -2,6 +2,7 @@
 using API.Entities;
 using AutoMapper;
 using DTO;
+using Entities;
 using Extensions;
 
 namespace API.Helper
@@ -15,6 +16,8 @@ namespace API.Helper
                 dest => dest.Age,
                 opt => opt.MapFrom(sr => sr.DateOfBirth.GetAge())
             );
+            CreateMap<Message, MessageDto>();
+            CreateMap<MessageDto, Message>();
 
 
 

@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Member } from '../model/member';
 import { MemberChat } from '../model/memberChat';
+import { User } from '../model/user';
+import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class MessagesService {
+
+
   /*
        Map thing was abounded for now. map cuz fg for to think different elements were pushed.
        if you got a salutation for this you should you it instead.

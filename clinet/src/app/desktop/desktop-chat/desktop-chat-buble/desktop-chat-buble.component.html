@@ -1,30 +1,105 @@
 <div class="buble">
-  <ng-container>
-    <div class="chat-container" [hidden]="true" *ngIf="showChat"></div>
-    <button mat-flat-button color="primary" class="close" (click)="onClose()">
-      <mat-icon aria-hidden="false" aria-label="Example home icon"
-        >close</mat-icon
-      >
-    </button>
-    <button mat-flat-button color="primary" (click)="showChat = !showChat" class="name-hold">
-      {{ chat.member.firstName }} {{ chat.member.lastName }}
-    </button>
+    <ng-container>
+        <div class="chat-container" [hidden]="true" *ngIf="showChat"></div>
+        <button
+            mat-flat-button
+            color="primary"
+            class="close"
+            (click)="onClose()"
+        >
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+                >close</mat-icon
+            >
+        </button>
+        <button
+            mat-flat-button
+            color="primary"
+            (click)="showChat = !showChat"
+            class="name-hold"
+        >
+            {{ chat.member.firstName }} {{ chat.member.lastName }}
+        </button>
 
-    <div class="chat-container" *ngIf="showChat">
-      <div class="history">
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Eaque a ducimus vel perferendis!</p>
-        <p>Amet quis dignissimos aspernatur tempore.</p>
-        <p>Autem praesentium sit sunt quis?</p>
-        <p>Ipsa cupiditate obcaecati deserunt veritatis?</p>
-      </div>
-    </div>
-  </ng-container>
+        <div
+            class="chat-container"
+            *ngIf="showChat"
+            style="overflow-y: scroll; height: 400px"
+            #scrollMe
+            [scrollTop]="scrollMe.scrollHeight"
+        >
+            <div class="history">
+                <div *ngIf="subMessagesService.messagesThread$ | async">
+                    <div
+                        *ngFor="
+                            let msg of subMessagesService.messagesThread$
+                                | async
+                        "
+                        class="msg-item"
+                        [ngClass]="{
+                            other: msg.senderUsername !== user.username
+                        }"
+                    >
+                       
+                        <div class="chat-body">
+                            <div>
+                                {{ msg.content }}
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="msg-header">
+                                <small class="sent-date">
+                                    <span
+                                        class=""
+                                        *ngIf="
+                                            msg.senderUsername !== user.username
+                                        "
+                                    >
+                                        {{ msg.messageSent | timeago }}
+                                    </span>
+                                    <span
+                                        class="text-danger"
+                                        *ngIf="
+                                            !msg.dateRead &&
+                                            msg.senderUsername === user.username
+                                        "
+                                    >
+                                        unread
+                                    </span>
+                                    <span
+                                        class="text-success"
+                                        *ngIf="
+                                            msg.dateRead &&
+                                            msg.senderUsername === user.username
+                                        "
+                                    >
+                                        read {{ msg.dateRead | timeago }}
+                                    </span>
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
 </div>
 <div class="text-send">
-  <mat-form-field appearance="legacy" *ngIf="showChat">
-
-    <input matInput placeholder="Message" autocomplete="off" />
-    <mat-icon matSuffix>send</mat-icon>
-  </mat-form-field>
+    <form (submit)="sendMessage() && false" #sendMsg="ngForm">
+        <mat-form-field appearance="legacy" *ngIf="showChat">
+            <input
+                matInput
+                placeholder="Message"
+                [(ngModel)]="text"
+                autocomplete="off"
+                name="message"
+            />
+        </mat-form-field>
+        <button
+            mat-icon-button
+            aria-label="Example icon button with a heart icon"
+            class="btn-send"
+        >
+            <mat-icon (click)="sendMessage()" matSuffix>send</mat-icon>
+        </button>
+    </form>
 </div>
